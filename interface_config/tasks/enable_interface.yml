@@ -1,0 +1,42 @@
+---
+- name: Ensure VLANs exist
+  cisco.ios.ios_vlans:
+    vlan_id: "{{ item.id }}"
+    name: "{{ item.name }}"
+    state: present
+  loop: "{{ vlans }}"
+  when: vlans is defined
+
+- name: Configure SVI interfaces
+  cisco.ios.ios_l3_interfaces:
+    config:
+      - name: "{{ item.name }}"
+        description: "{{ item.description }}"
+        ipv4:
+          - address: "{{ item.ip_address }}"
+        enabled: yes
+  loop: "{{ l3_interfaces }}"
+  when: l3_interfaces is defined
+
+- name: Configure L2 VLAN interfaces
+  cisco.ios.ios_config:
+    parents: "interface {{ item.name }}"
+    lines:
+      - "switchport mode {{ item.mode }}"
+      - "{% if item.mode == 'access' %}switchport access vlan {{ item.vlan }}{% endif %}"
+      - "{% if item.mode == 'trunk' %}switchport trunk allowed vlan {{ item.trunk_vlans }}{% endif %}"
+      - description {{ item.description }}
+      - no shutdown
+  loop: "{{ l2_interfaces }}"
+  when: l2_interfaces is defined
+
+- name: Configure and enable L3 interfaces
+  cisco.ios.ios_interfaces:
+    config:
+      - name: "{{ item.name }}"
+        description: "{{ item.description }}"
+        enabled: "{{ item.enabled }}"
+  loop: "{{ l3_interfaces }}"
+  when: l3_interfaces is defined
+
+

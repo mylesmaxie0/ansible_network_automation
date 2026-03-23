@@ -1,0 +1,19 @@
+- cisco.ios.ios_snmp_server:
+    config:
+      groups:
+        - group: "{{ snmp_group }}"
+          version: v3
+          version_option: priv
+      users:
+        - username: "{{ snmp_user }}"
+          group: "{{ snmp_group }}"
+          version: v3
+          authentication:
+            algorithm: sha
+            password: "cisco"
+          encryption:
+            priv: aes
+            priv_option: 256
+            password: "cisco"
+      source_interface: "Ethernet0/0"
+  when: ansible_network_os == 'ios' 

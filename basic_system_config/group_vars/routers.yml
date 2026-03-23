@@ -1,0 +1,4 @@
+banner: "This is a banner for routers"
+ntp_src_int: "Ethernet0/0"
+
+

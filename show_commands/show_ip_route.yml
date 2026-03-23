@@ -1,0 +1,14 @@
+- name: Run show ip route on remote devices
+  hosts: all
+  gather_facts: no
+
+  tasks:
+    - name: Execute show ip route command
+      ios_command:
+        commands:
+          - show ip route
+      register: output
+
+    - name: Print output
+      debug:
+        var: output.stdout_lines

@@ -1,0 +1,26 @@
+---
+- name: Configure L2 access interfaces
+  cisco.ios.ios_config:
+    parents: "interface {{ item.name }}"
+    lines:
+      - "switchport mode access"
+      - "switchport access vlan {{ item.vlan }}"
+      - description {{ item.description }}
+      - no shutdown
+  loop: "{{ l2_interfaces }}"
+  when:
+    - l2_interfaces is defined
+    - item.mode == "access"
+
+- name: Configure L2 trunk interfaces
+  cisco.ios.ios_config:
+    parents: "interface {{ item.name }}"
+    lines:
+      - "switchport mode trunk"
+      - "switchport trunk allowed vlan {{ item.trunk_vlans }}"
+      - description {{ item.description }}
+      - no shutdown
+  loop: "{{ l2_interfaces }}"
+  when:
+    - l2_interfaces is defined
+    - item.mode == "trunk"

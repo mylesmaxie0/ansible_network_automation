@@ -1,0 +1,19 @@
+l3_interfaces:
+  - name: Ethernet0/1
+    description: Link to ISP-RTR-B
+    enabled: true
+    ip_address: 78.23.91.1/30
+
+  - name: Ethernet0/2
+    description: Link to CORE-RTR-A
+    enabled: true
+    ip_address: 78.23.91.13/30
+
+  - name: Ethernet0/3
+    description: Link to CORE-RTR-B
+    enabled: true
+    ip_address: 78.23.91.5/30
+
+
+
+    

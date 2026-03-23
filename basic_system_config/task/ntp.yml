@@ -1,0 +1,10 @@
+- name: Apply the provided configuration
+  cisco.ios.ios_ntp_global:
+    config:
+      servers:
+        - server: "{{ntpserver}}"
+          vrf: management
+      source: "{{ntp_src_int}}"
+  when: ansible_network_os == 'ios'
+
+

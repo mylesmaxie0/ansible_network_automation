@@ -1,0 +1,21 @@
+---
+- name: Configure SVI interfaces
+  cisco.ios.ios_l3_interfaces:
+    config:
+      - name: "Vlan{{ item.vlan }}"
+        ipv4:
+          - address: "{{ item.ip_address }}"
+  loop: "{{ svi_interfaces }}"
+  when:
+    - svi_interfaces is defined
+    - "'SW' in inventory_hostname"
+
+- name: Enable SVI interfaces
+  cisco.ios.ios_interfaces:
+    config:
+      - name: "Vlan{{ item.vlan }}"
+        enabled: "{{ item.enabled }}"
+  loop: "{{ svi_interfaces }}"
+  when:
+    - svi_interfaces is defined
+    - "'SW' in inventory_hostname"

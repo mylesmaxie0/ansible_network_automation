@@ -1,0 +1,12 @@
+---
+- name: Configure and enable L3 interfaces
+  cisco.ios.ios_l3_interfaces:
+    config:
+      - name: "{{ item.name }}"
+        ipv4:
+          - address: "{{ item.ip_address }}"
+  loop: "{{ l3_interfaces }}"
+  when: l3_interfaces is defined
+
+
+  

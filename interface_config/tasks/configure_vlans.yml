@@ -1,0 +1,11 @@
+---
+- name: Create VLANs
+  cisco.ios.ios_vlans:
+    config:
+      - vlan_id: "{{ item.id }}"
+        name: "{{ item.name }}"
+    state: merged
+  loop: "{{ vlans }}"
+  when:
+    - vlans is defined
+    - "'SW' in inventory_hostname"   # run only on switches

@@ -1,0 +1,6 @@
+ansible_connection: network_cli
+ntpserver: 192.168.1.240
+banner: "Global All Banner Config"
+snmp_user: snmpv3
+snmp_group: snmpv3_grp
+ntp_src_int: "Ethernet0/0"

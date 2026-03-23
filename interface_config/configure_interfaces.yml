@@ -1,0 +1,10 @@
+---
+- hosts: all
+  gather_facts: false
+  tags: config_ints
+
+  tasks:
+    - import_tasks: tasks/configure_vlans.yml
+    - import_tasks: tasks/configure_l2_ints.yml
+    - import_tasks: tasks/configure_l3_ints.yml
+    - import_tasks: tasks/configure_svi.yml

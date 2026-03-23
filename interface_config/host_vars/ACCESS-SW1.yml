@@ -1,0 +1,16 @@
+l2_interfaces:
+  - name: Ethernet0/3
+    description: access port to VLAN 10
+    enabled: true
+    mode: access
+    vlan: 10
+
+l3_interfaces: []
+
+vlans:
+  - id: 10
+    name: DATA
+  - id: 20
+    name: VOICE
+  - id: 30
+    name: IPTV

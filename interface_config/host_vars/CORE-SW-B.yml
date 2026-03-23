@@ -1,0 +1,19 @@
+l3_interfaces:
+  - name: Ethernet1/0
+    description: Link to CORE-RTR-B
+    enabled: true
+    ip_address: 10.11.0.6/30
+
+svi_interfaces:
+  - vlan: 10
+    name: DATA
+    ip_address: 192.168.10.254/24
+    enabled: true
+  - vlan: 20
+    name: VOICE
+    ip_address: 192.168.20.126/25
+    enabled: true
+  - vlan: 30
+    name: IPTV
+    ip_address: 192.168.2.254/25
+    enabled: true
