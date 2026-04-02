@@ -6,6 +6,10 @@ A comprehensive Ansible automation framework for managing and configuring networ
 
 This project provides automated configuration and management of enterprise network devices using Ansible playbooks. It includes three main modules for system configuration, interface management, and information gathering.
 
+## Network Topology
+<img width="1301" height="850" alt="Screenshot 2026-04-02 at 6 44 53 PM" src="https://github.com/user-attachments/assets/32445d5d-533a-4a6c-b2e8-b59714a8a63e" />
+
+
 ## Modules
 
 ### Basic System Config
