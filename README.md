@@ -6,23 +6,6 @@ A comprehensive Ansible automation framework for managing and configuring networ
 
 This project provides automated configuration and management of enterprise network devices using Ansible playbooks. It includes three main modules for system configuration, interface management, and information gathering.
 
-## Monitoring & Observability
-
-Syslog is enabled across all managed network devices in this infrastructure. All devices 
-(CORE-RTR-A, CORE-RTR-B, CORE-SW-A, CORE-SW-B, ACCESS-SW1–SW3, ISP-RTR-A, ISP-RTR-B) 
-forward syslog messages to a centralized Splunk instance for log aggregation, alerting, 
-and operational visibility.
-
-**Syslog Details:**
-- **Protocol:** UDP 514 / TCP 5514
-- **Facility:** local7
-- **Severity Level:** Informational and above
-- **Source Interface:** Loopback0 (stable across link failures)
-- **Log Aggregator:** Splunk (index: `network_syslog`)
-
-Syslog coverage includes interface state changes, authentication events, routing 
-protocol updates, and system errors across all core, access, and ISP layers.
-
 ## Network Topology
 <img width="1301" height="850" alt="Screenshot 2026-04-02 at 6 44 53 PM" src="https://github.com/user-attachments/assets/32445d5d-533a-4a6c-b2e8-b59714a8a63e" />
 
